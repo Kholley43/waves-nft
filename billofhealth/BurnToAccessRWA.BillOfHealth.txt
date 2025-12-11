@@ -1,0 +1,18 @@
+Contract: BurnToAccessRWA
+Status: PASS
+
+Requirements matched:
+- Receives 50% of mint proceeds (deposit restricted to SurfCardsNFT)
+- 1of1 access only: burnForAccess requires tokenId is 1of1
+- Burn-to-access payout: equal share based on remaining 1of1 count
+- Calls SurfCardsNFT.burnOneOfOne to burn NFT, then pays ETH
+
+Tests executed (see test/surfcards.test.js):
+- burn-for-access pays equal share: PASS
+- burn-for-access is not reentrancy exploitable: PASS (attacker contract attempts reentry during payout; blocked by nonReentrant)
+- burn pool rejects deposits from non-SurfCards callers: PASS (deposit() restricted)
+
+Last test run:
+- Command: HARDHAT_DISABLE_TELEMETRY=1 npx hardhat test
+- Result: 9 passing
+

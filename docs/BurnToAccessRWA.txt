@@ -1,0 +1,4 @@
+Role: Holds 50% of mint proceeds for 1of1-only burn-to-access payouts.
+How: Receives ETH via deposit() callable only by SurfCardsNFT. Tracks remaining 1of1s (starts 35). Holder calls burnForAccess(tokenId): validates odd token, asks SurfCardsNFT to burn, pays equal share = balance / remaining.
+Access control: Ownable for deployment; only SurfCardsNFT can deposit; reentrancy guarded.
+
